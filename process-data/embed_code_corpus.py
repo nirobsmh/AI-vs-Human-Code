@@ -267,3 +267,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+# python embed_code_corpus.py \
+#   --input task_a_training_set_1.csv \
+#   --out_dir emb_shards_local \
+#   --text_col code \
+#   --label_col label \
+#   --lang_col language \
+#   --gen_col generator \
+#   --chunksize 10000 \
+#   --batch_size 32 \ 
+#   --model jinaai/jina-embeddings-v2-base-code \
+#   --max_seq_length 512 \ 
+#   --normalize
