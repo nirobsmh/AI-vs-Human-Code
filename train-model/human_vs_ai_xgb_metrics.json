@@ -1,0 +1,99 @@
+{
+  "metrics@0.5": {
+    "roc_auc": 0.6129586511441188,
+    "pr_auc": 0.6454292390320093,
+    "threshold": 0.5,
+    "classification_report": {
+      "0": {
+        "precision": 0.5465742879137798,
+        "recall": 0.7553191489361702,
+        "f1-score": 0.6342117016525235,
+        "support": 940.0
+      },
+      "1": {
+        "precision": 0.6718972895863052,
+        "recall": 0.44433962264150945,
+        "f1-score": 0.534923339011925,
+        "support": 1060.0
+      },
+      "accuracy": 0.5905,
+      "macro avg": {
+        "precision": 0.6092357887500426,
+        "recall": 0.5998293857888398,
+        "f1-score": 0.5845675203322243,
+        "support": 2000.0
+      },
+      "weighted avg": {
+        "precision": 0.6129954788002183,
+        "recall": 0.5905,
+        "f1-score": 0.5815888694530063,
+        "support": 2000.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        710,
+        230
+      ],
+      [
+        589,
+        471
+      ]
+    ]
+  },
+  "metrics@best_f1": {
+    "roc_auc": 0.6129586511441188,
+    "pr_auc": 0.6454292390320093,
+    "threshold": 0.2151668816804886,
+    "classification_report": {
+      "0": {
+        "precision": 0.75,
+        "recall": 0.009574468085106383,
+        "f1-score": 0.018907563025210083,
+        "support": 940.0
+      },
+      "1": {
+        "precision": 0.5316901408450704,
+        "recall": 0.9971698113207547,
+        "f1-score": 0.6935695538057742,
+        "support": 1060.0
+      },
+      "accuracy": 0.533,
+      "macro avg": {
+        "precision": 0.6408450704225352,
+        "recall": 0.5033721397029305,
+        "f1-score": 0.3562385584154922,
+        "support": 2000.0
+      },
+      "weighted avg": {
+        "precision": 0.6342957746478873,
+        "recall": 0.533,
+        "f1-score": 0.3764784181389091,
+        "support": 2000.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        9,
+        931
+      ],
+      [
+        3,
+        1057
+      ]
+    ]
+  },
+  "best_threshold": 0.2151668816804886,
+  "best_f1": 0.6935695538053206,
+  "pos_rate": 0.53,
+  "params": {
+    "n_estimators": 600,
+    "max_depth": 6,
+    "learning_rate": 0.05,
+    "subsample": 0.9,
+    "colsample_bytree": 0.9,
+    "reg_lambda": 1.0,
+    "scale_pos_weight": 0.8867924528301887,
+    "early_stopping_rounds": 50
+  }
+}
