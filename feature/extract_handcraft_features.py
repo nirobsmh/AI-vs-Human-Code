@@ -455,3 +455,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#python extract_handcraft_features.py --in ../data/SemEval-2026-Task13/task_a/training-chunks/chunk_part001.csv --out handcraft_feature_task_a_training_set_1_chunk_part001_10k.csv
