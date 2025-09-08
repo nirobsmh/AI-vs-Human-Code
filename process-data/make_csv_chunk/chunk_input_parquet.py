@@ -154,3 +154,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# python chunk_input_parquet.py \
+#   --in ../../data/SemEval-2026-Task13/task_a/task_a_training_set_1.parquet \
+#   --out_dir ../../data/SemEval-2026-Task13/task_a/chunks \
+#   --sizes 10000,10000,10000,10000,10000,50000,50000,50000,50000,50000,50000,50000,50000,50000
