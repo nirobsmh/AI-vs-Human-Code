@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../human-eval"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../AI-vs-Humane-Image"
+		}
+	],
+	"settings": {}
+}
