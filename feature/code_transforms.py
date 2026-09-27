@@ -30,6 +30,20 @@ def ast_normalize_code(code: str):
         return None
 
 
+def remove_comments_only(source: str):
+    """Remove comments only; keep docstrings and other string literals."""
+    try:
+        tokens = list(
+            tokenize.generate_tokens(io.StringIO(str(source)).readline)
+        )
+        filtered = [token for token in tokens if token.type != tokenize.COMMENT]
+        result = tokenize.untokenize(filtered)
+        ast.parse(result)
+        return result
+    except Exception:
+        return None
+
+
 def remove_comments_and_docstrings(source: str):
     """Remove comments and most standalone docstrings; keep remaining tokens."""
     try:
@@ -79,6 +93,7 @@ def remove_comments_and_docstrings(source: str):
 TRANSFORMS = {
     "black": black_format_code,
     "ast": ast_normalize_code,
+    "comments_only": remove_comments_only,
     "no_comments": remove_comments_and_docstrings,
 }
 
