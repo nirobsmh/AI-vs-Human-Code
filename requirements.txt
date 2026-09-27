@@ -1,3 +1,4 @@
+black
 joblib
 numpy
 pandas
