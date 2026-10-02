@@ -20,6 +20,7 @@ experiments/canonical70k/
   embeddings/     # *.npy arrays
   models/         # joblib models
   results/        # metrics tables + final_summary.json
+  figures/        # IEEE pipeline figure script + outputs
   logs/
 
 scripts/canonical70k/
@@ -97,6 +98,15 @@ Uses frozen manifests, Stage-2 features, Stage-3 embeddings, and Stage-4 models/
 - `final_summary.json`
 
 Does **not** resample data, regenerate Stage-2/3 artifacts, or retrain the Stage-4 RF/LR/hybrid (ablation and parseable-Python RFs are separate Stage-5 models only).
+
+### Pipeline figure
+
+```bash
+python experiments/canonical70k/figures/plot_pipeline_ieee.py
+python experiments/canonical70k/figures/plot_robustness_roc_ieee.py
+```
+
+Writes IEEE figures under `experiments/canonical70k/figures/` (`pipeline_ieee.*`, `robustness_roc_ieee_color.*`).
 
 ## Force overwrite
 
