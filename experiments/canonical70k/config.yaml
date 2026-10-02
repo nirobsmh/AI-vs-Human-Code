@@ -1,0 +1,82 @@
+# Canonical 70k experiment — FROZEN once manifests are written.
+# Do not change seed / sizes after 01_build_split.py succeeds.
+
+experiment_name: canonical70k
+random_seed: 42
+
+paths:
+  repo_root: .   # resolved relative to this file's parents
+  source_csv: data/SemEval-2026-Task13/task_a/task_a_training_set_1.csv
+  experiment_dir: experiments/canonical70k
+  manifests_dir: experiments/canonical70k/manifests
+  features_dir: experiments/canonical70k/features
+  embeddings_dir: experiments/canonical70k/embeddings
+  models_dir: experiments/canonical70k/models
+  results_dir: experiments/canonical70k/results
+  logs_dir: experiments/canonical70k/logs
+
+columns:
+  code: code
+  label: label
+  language: language
+  generator: generator
+  id: id
+
+split:
+  total_size: 70000
+  train_size: 50000
+  val_size: 10000
+  test_size: 10000
+  # Preserve source proportions; never use generator as a stratum.
+  stratify_by:
+    - label
+    - language
+  generator_as_stratum: false
+
+features:
+  # Must match feature/extract_handcraft_features.py FEATURE_FIELDS (25 dims)
+  n_features: 25
+
+# Stage 3 CodeBERT settings (scientific method frozen; batch_size may vary for hardware)
+codebert:
+  model: microsoft/codebert-base
+  max_length: 512
+  batch_size: 32
+  pooling: mean
+  l2_normalize: true
+  dim: 768
+
+embeddings:
+  model_name: microsoft/codebert-base
+  dim: 768
+  batch_size: 32
+  max_len: 512
+
+models:
+  # Match the 10k pilot hyperparameters
+  random_forest:
+    n_estimators: 300
+    random_state: 42
+    n_jobs: -1
+    class_weight: balanced
+  logistic_regression:
+    max_iter: 2000
+    random_state: 42
+    n_jobs: -1
+    class_weight: balanced
+  hybrid:
+    alpha_grid_step: 0.025
+    selection_metric: pr_auc   # then F1 tie-break
+
+robustness:
+  cohort: parseable_python_test
+  transforms:
+    - black
+    - ast
+    - comments_only
+  best_alpha_fallback: 0.85   # overwritten by 06_hybrid_fusion.py artifact
+
+python_languages:
+  - python
+  - py
+  - python3

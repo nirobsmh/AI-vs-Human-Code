@@ -7,3 +7,16 @@ __pycache__/
 *.zip
 *.joblib
 hybrid-output/
+
+# Canonical 70k large artifacts (keep config + split_meta + id index)
+experiments/canonical70k/features/**
+experiments/canonical70k/embeddings/**
+experiments/canonical70k/models/**
+experiments/canonical70k/results/**
+experiments/canonical70k/logs/**
+experiments/canonical70k/manifests/train.csv
+experiments/canonical70k/manifests/val.csv
+experiments/canonical70k/manifests/test.csv
+!experiments/canonical70k/**/.gitkeep
+!experiments/canonical70k/manifests/split_meta.json
+!experiments/canonical70k/manifests/all_ids.csv

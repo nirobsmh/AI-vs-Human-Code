@@ -1,0 +1,60 @@
+{
+  "experiment": "canonical70k",
+  "stage": 1,
+  "random_seed": 42,
+  "source_csv": "data/SemEval-2026-Task13/task_a/task_a_training_set_1.csv",
+  "source_rows": 500000,
+  "stratify_by": [
+    "label",
+    "language"
+  ],
+  "generator_used_as_stratum": false,
+  "total_size": 70000,
+  "train_size": 50000,
+  "val_size": 10000,
+  "test_size": 10000,
+  "dedup_stats": {
+    "rows_before_dedup": 500000,
+    "exact_duplicates_removed": 0,
+    "normalized_duplicates_removed": 24,
+    "rows_after_dedup": 499976,
+    "source_rows": 500000,
+    "conflicting_normalized_hashes": 0,
+    "rows_after_conflict_filter": 500000,
+    "rows_excluded_due_to_label_conflicts": 0
+  },
+  "conflicting_label_hashes": 0,
+  "label_counts": {
+    "train": {
+      "0": 23846,
+      "1": 26154
+    },
+    "val": {
+      "0": 4769,
+      "1": 5231
+    },
+    "test": {
+      "0": 4770,
+      "1": 5230
+    }
+  },
+  "language_counts": {
+    "train": {
+      "Python": 45732,
+      "C++": 2338,
+      "Java": 1930
+    },
+    "val": {
+      "Python": 9146,
+      "C++": 468,
+      "Java": 386
+    },
+    "test": {
+      "Python": 9146,
+      "C++": 468,
+      "Java": 386
+    }
+  },
+  "frozen": true,
+  "note": "Canonical Stage-1 split. Do not regenerate without --force. Downstream stages must reuse these manifests."
+}
