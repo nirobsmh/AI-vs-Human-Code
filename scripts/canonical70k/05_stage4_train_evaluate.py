@@ -33,7 +33,6 @@ if str(SYS_DIR) not in sys.path:
 from common import (  # noqa: E402
     ensure_dirs,
     load_config,
-    load_manifest,
     refuse_overwrite,
     resolve_path,
     save_json,
@@ -114,8 +113,6 @@ def load_split_arrays(features_dir: Path, embeddings_dir: Path, manifests_dir: P
         raise AssertionError(f"{split_out}: feature IDs != manifest IDs")
     if not np.array_equal(y, y_m):
         raise AssertionError(f"{split_out}: feature labels != manifest labels")
-    if not np.array_equal(y, y):  # keep explicit
-        pass
 
     return Xf, Xe, y, ids_f
 

@@ -20,7 +20,7 @@ ast_depth,n_ifs,n_loops,n_funcs,n_imports,n_try,n_with,n_comprehensions,n_boolop
 problem_id
 
 Usage:
-    python features.py --in path/to/input.csv --out path/to/output.csv
+    python feature/extract_handcraft_features.py --in path/to/input.csv --out path/to/output.csv
 """
 
 from __future__ import annotations

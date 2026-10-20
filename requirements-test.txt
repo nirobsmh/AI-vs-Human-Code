@@ -1,0 +1,8 @@
+# Versions exercised by the synthetic test suite on Python 3.9.18.
+# No GPU/model libraries; transitive dependencies are not locked.
+black==25.11.0
+joblib==1.5.2
+numpy==2.0.2
+pandas==2.3.2
+PyYAML==6.0.2
+scikit-learn==1.6.1

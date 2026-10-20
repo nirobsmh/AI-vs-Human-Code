@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "experiment_name": "canonical70k",
+  "provenance": {
+    "kind": "documentation_snapshot_of_existing_local_artifacts",
+    "inspected_on": "2026-10-20",
+    "source_code_commit": "05f31f23b438525191a678bd5c6a1980e673f503",
+    "revised_manuscript": {
+      "title": "Beyond Whitespace: Evaluating Machine-Generated Code Detectors Under Formatting Shifts",
+      "status": "under review; not accepted or published",
+      "main_test_and_hybrid_roc_auc": "Author-provided values match saved artifacts to displayed precision except RF F1; see precision_discrepancy."
+    },
+    "other_values": "transcribed from saved canonical artifact tables; not independently reproduced",
+    "independently_reproduced": false,
+    "note": "No training, embedding extraction or full robustness stages were run for this documentation export.",
+    "precision_discrepancy": {
+      "metric": "RF F1",
+      "manuscript_reported": 0.9695,
+      "saved_artifact": 0.969449715370019,
+      "artifact_rounded_four_decimals": 0.9694,
+      "resolution": "Preserve both; author verification required."
+    }
+  },
+  "dataset": {
+    "total_size": 70000,
+    "train_size": 50000,
+    "validation_size": 10000,
+    "test_size": 10000,
+    "seed": 42,
+    "n_features": 25,
+    "test_labels": {
+      "human": 4770,
+      "ai": 5230
+    }
+  },
+  "metric_conventions": {
+    "PR_AUC": "sklearn.metrics.average_precision_score",
+    "paired_confidence_intervals": "95% percentile; 1000 paired resamples; seed 42"
+  },
+  "main_test": [
+    {
+      "Model": "Features (RF)",
+      "ROC_AUC": 0.9944662305438308,
+      "PR_AUC": 0.9946447365140264,
+      "F1": 0.969449715370019,
+      "Threshold": 0.5299999999999998
+    },
+    {
+      "Model": "CodeBERT (LR)",
+      "ROC_AUC": 0.9716015488774248,
+      "PR_AUC": 0.9737476823155488,
+      "F1": 0.930067976534128,
+      "Threshold": 0.3799999999999998
+    },
+    {
+      "Model": "Hybrid Fusion",
+      "ROC_AUC": 0.9948085348597632,
+      "PR_AUC": 0.9952605701951852,
+      "F1": 0.9706134094151212,
+      "Threshold": 0.5699999999999997
+    }
+  ],
+  "hybrid_minus_rf_paired": [
+    {
+      "Metric": "ROC_AUC",
+      "Observed_Difference": 0.0003423043159326,
+      "CI_Lower": -7.510280010353239e-06,
+      "CI_Upper": 0.0006829926517192
+    },
+    {
+      "Metric": "PR_AUC",
+      "Observed_Difference": 0.0006158336811586,
+      "CI_Lower": 0.0002514601273593,
+      "CI_Upper": 0.0010437587891032
+    },
+    {
+      "Metric": "F1",
+      "Observed_Difference": 0.0011636940451023,
+      "CI_Lower": 0.0001312062903998,
+      "CI_Upper": 0.0021003608794874
+    }
+  ],
+  "python_ablation": [
+    {
+      "Model": "RF - All 25",
+      "ROC_AUC": 0.9985919699855396,
+      "PR_AUC": 0.9989103088603424,
+      "F1": 0.989641100763838,
+      "N_train": 45732,
+      "N_validation": 9146,
+      "N_test": 9146
+    },
+    {
+      "Model": "RF - Surface 8",
+      "ROC_AUC": 0.9939817349287478,
+      "PR_AUC": 0.9944434832182352,
+      "F1": 0.9743374882161936,
+      "N_train": 45732,
+      "N_validation": 9146,
+      "N_test": 9146
+    },
+    {
+      "Model": "RF - AST 17",
+      "ROC_AUC": 0.9296442635469906,
+      "PR_AUC": 0.949056055166382,
+      "F1": 0.859326229684641,
+      "N_train": 45732,
+      "N_validation": 9146,
+      "N_test": 9146
+    },
+    {
+      "Model": "RF - Length only",
+      "ROC_AUC": 0.7487665930221323,
+      "PR_AUC": 0.7759832702202377,
+      "F1": 0.709900719555515,
+      "N_train": 45732,
+      "N_validation": 9146,
+      "N_test": 9146
+    },
+    {
+      "Model": "Parse failure only",
+      "ROC_AUC": 0.77936872909699,
+      "PR_AUC": 0.7895487418152352,
+      "F1": 0.7169102856376559,
+      "N_train": 45732,
+      "N_validation": 9146,
+      "N_test": 9146
+    }
+  ],
+  "python_parse_validity": [
+    {
+      "Split": "train",
+      "Label": "Human",
+      "Parseable": 21804,
+      "Total": 21810,
+      "Parse_Rate": 0.9997248968363136
+    },
+    {
+      "Split": "train",
+      "Label": "AI",
+      "Parseable": 10659,
+      "Total": 23922,
+      "Parse_Rate": 0.445573112616002
+    },
+    {
+      "Split": "val",
+      "Label": "Human",
+      "Parseable": 4361,
+      "Total": 4362,
+      "Parse_Rate": 0.9997707473635948
+    },
+    {
+      "Split": "val",
+      "Label": "AI",
+      "Parseable": 2146,
+      "Total": 4784,
+      "Parse_Rate": 0.4485785953177257
+    },
+    {
+      "Split": "test",
+      "Label": "Human",
+      "Parseable": 4362,
+      "Total": 4362,
+      "Parse_Rate": 1.0
+    },
+    {
+      "Split": "test",
+      "Label": "AI",
+      "Parseable": 2111,
+      "Total": 4784,
+      "Parse_Rate": 0.4412625418060201
+    }
+  ],
+  "parseable_python_control": [
+    {
+      "Model": "RF - Parseable Python only",
+      "ROC_AUC": 0.99707694743653,
+      "PR_AUC": 0.9952510395010332,
+      "F1": 0.9752498810090432,
+      "N_train": 32463,
+      "N_validation": 6507,
+      "N_test": 6473
+    }
+  ],
+  "robustness_cohort": {
+    "original_parseable_python_n": 6473,
+    "common_success_n": 6473,
+    "human_n": 4362,
+    "ai_n": 2111,
+    "main_models_retrained": false,
+    "thresholds_and_weights_fixed": true
+  },
+  "robustness": [
+    {
+      "Transformation": "Black formatting",
+      "N": 6473,
+      "Model": "Features (RF)",
+      "Original_ROC_AUC": 0.9967995854121908,
+      "Transformed_ROC_AUC": 0.6055044850329848,
+      "Original_PR_AUC": 0.9952642285335326,
+      "Transformed_PR_AUC": 0.3974409160854526,
+      "Original_F1": 0.9748338081671416,
+      "Transformed_F1": 0.5128015755785328,
+      "Prediction_Flip_Rate": 0.6071373397188321
+    },
+    {
+      "Transformation": "Black formatting",
+      "N": 6473,
+      "Model": "CodeBERT (LR)",
+      "Original_ROC_AUC": 0.9859751903252998,
+      "Transformed_ROC_AUC": 0.6935849009066068,
+      "Original_PR_AUC": 0.970792321173554,
+      "Transformed_PR_AUC": 0.5455639469786877,
+      "Original_F1": 0.9410157139603736,
+      "Transformed_F1": 0.5025173819228003,
+      "Prediction_Flip_Rate": 0.610999536536382
+    },
+    {
+      "Transformation": "Black formatting",
+      "N": 6473,
+      "Model": "Hybrid Fusion",
+      "Original_ROC_AUC": 0.9966678547404906,
+      "Transformed_ROC_AUC": 0.6807113499711452,
+      "Original_PR_AUC": 0.9954005548669556,
+      "Transformed_PR_AUC": 0.551526201348429,
+      "Original_F1": 0.9759923936296648,
+      "Transformed_F1": 0.51311737898756,
+      "Prediction_Flip_Rate": 0.6071373397188321
+    },
+    {
+      "Transformation": "AST normalization",
+      "N": 6473,
+      "Model": "Features (RF)",
+      "Original_ROC_AUC": 0.9967995854121908,
+      "Transformed_ROC_AUC": 0.5883882399370473,
+      "Original_PR_AUC": 0.9952642285335326,
+      "Transformed_PR_AUC": 0.3846569233983282,
+      "Original_F1": 0.9748338081671416,
+      "Transformed_F1": 0.5048591462664535,
+      "Prediction_Flip_Rate": 0.6187239301714815
+    },
+    {
+      "Transformation": "AST normalization",
+      "N": 6473,
+      "Model": "CodeBERT (LR)",
+      "Original_ROC_AUC": 0.9859751903252998,
+      "Transformed_ROC_AUC": 0.6066490649294289,
+      "Original_PR_AUC": 0.970792321173554,
+      "Transformed_PR_AUC": 0.4211059165829977,
+      "Original_F1": 0.9410157139603736,
+      "Transformed_F1": 0.500667718829671,
+      "Prediction_Flip_Rate": 0.6055924609918122
+    },
+    {
+      "Transformation": "AST normalization",
+      "N": 6473,
+      "Model": "Hybrid Fusion",
+      "Original_ROC_AUC": 0.9966678547404906,
+      "Transformed_ROC_AUC": 0.631973716418724,
+      "Original_PR_AUC": 0.9954005548669556,
+      "Transformed_PR_AUC": 0.4684146451881902,
+      "Original_F1": 0.9759923936296648,
+      "Transformed_F1": 0.5051076923076923,
+      "Prediction_Flip_Rate": 0.6188784180441835
+    },
+    {
+      "Transformation": "Comments removed",
+      "N": 6473,
+      "Model": "Features (RF)",
+      "Original_ROC_AUC": 0.9967995854121908,
+      "Transformed_ROC_AUC": 0.9962267253188524,
+      "Original_PR_AUC": 0.9952642285335326,
+      "Transformed_PR_AUC": 0.993801348173036,
+      "Original_F1": 0.9748338081671416,
+      "Transformed_F1": 0.9691313711414212,
+      "Prediction_Flip_Rate": 0.0054070755445697
+    },
+    {
+      "Transformation": "Comments removed",
+      "N": 6473,
+      "Model": "CodeBERT (LR)",
+      "Original_ROC_AUC": 0.9859751903252998,
+      "Transformed_ROC_AUC": 0.9871044034533636,
+      "Original_PR_AUC": 0.970792321173554,
+      "Transformed_PR_AUC": 0.9721546015537772,
+      "Original_F1": 0.9410157139603736,
+      "Transformed_F1": 0.9425652667423382,
+      "Prediction_Flip_Rate": 0.0021628302178279
+    },
+    {
+      "Transformation": "Comments removed",
+      "N": 6473,
+      "Model": "Hybrid Fusion",
+      "Original_ROC_AUC": 0.9966678547404906,
+      "Transformed_ROC_AUC": 0.996174054769986,
+      "Original_PR_AUC": 0.9954005548669556,
+      "Transformed_PR_AUC": 0.994044618751657,
+      "Original_F1": 0.9759923936296648,
+      "Transformed_F1": 0.9701028462090407,
+      "Prediction_Flip_Rate": 0.0043256604356558
+    }
+  ],
+  "robustness_transform_success": [
+    {
+      "Transformation": "Black formatting",
+      "Label": "Human",
+      "Valid": 4362,
+      "Total": 4362,
+      "Success_Rate": 1.0
+    },
+    {
+      "Transformation": "Black formatting",
+      "Label": "AI",
+      "Valid": 2111,
+      "Total": 2111,
+      "Success_Rate": 1.0
+    },
+    {
+      "Transformation": "AST normalization",
+      "Label": "Human",
+      "Valid": 4362,
+      "Total": 4362,
+      "Success_Rate": 1.0
+    },
+    {
+      "Transformation": "AST normalization",
+      "Label": "AI",
+      "Valid": 2111,
+      "Total": 2111,
+      "Success_Rate": 1.0
+    },
+    {
+      "Transformation": "Comments removed",
+      "Label": "Human",
+      "Valid": 4362,
+      "Total": 4362,
+      "Success_Rate": 1.0
+    },
+    {
+      "Transformation": "Comments removed",
+      "Label": "AI",
+      "Valid": 2111,
+      "Total": 2111,
+      "Success_Rate": 1.0
+    }
+  ],
+  "robustness_delta_confidence_intervals": [
+    {
+      "Transformation": "Black formatting",
+      "Model": "Features (RF)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.3912951003792061,
+      "CI_Lower": -0.4049748073789444,
+      "CI_Upper": -0.3767164558347651
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "Features (RF)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.59782331244808,
+      "CI_Lower": -0.6139387378504295,
+      "CI_Upper": -0.5804864489245233
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "Features (RF)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.4620322325886087,
+      "CI_Lower": -0.4757668336742833,
+      "CI_Upper": -0.4488166518500797
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.2923902894186929,
+      "CI_Lower": -0.3063096239244857,
+      "CI_Upper": -0.2784048662272474
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.4252283741948662,
+      "CI_Lower": -0.4469656228839216,
+      "CI_Upper": -0.4035724699240585
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.4384983320375732,
+      "CI_Lower": -0.4512600553526402,
+      "CI_Upper": -0.4264037011879248
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.3159565047693453,
+      "CI_Lower": -0.3300027594750583,
+      "CI_Upper": -0.3014003991737224
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.4438743535185265,
+      "CI_Lower": -0.4647212928479923,
+      "CI_Upper": -0.4233543760117683
+    },
+    {
+      "Transformation": "Black formatting",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.4628750146421048,
+      "CI_Lower": -0.4762259245755128,
+      "CI_Upper": -0.4492716363214106
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Features (RF)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.4084113454751437,
+      "CI_Lower": -0.4226895322455682,
+      "CI_Upper": -0.3941335811674435
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Features (RF)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.6106073051352043,
+      "CI_Lower": -0.6267983354817467,
+      "CI_Upper": -0.5932024994253969
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Features (RF)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.469974661900688,
+      "CI_Lower": -0.4835797843969323,
+      "CI_Upper": -0.4567768983021004
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.3793261253958708,
+      "CI_Lower": -0.3940402366743517,
+      "CI_Upper": -0.3648119172068776
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.5496864045905563,
+      "CI_Lower": -0.5683218928807136,
+      "CI_Upper": -0.5290895090795988
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.4403479951307025,
+      "CI_Lower": -0.4532707974342808,
+      "CI_Upper": -0.4278811646990278
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.3646941383217665,
+      "CI_Lower": -0.3790276161517364,
+      "CI_Upper": -0.3507372952066295
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.5269859096787652,
+      "CI_Lower": -0.5477200709285392,
+      "CI_Upper": -0.5043259151423016
+    },
+    {
+      "Transformation": "AST normalization",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.4708847013219726,
+      "CI_Lower": -0.4842784295348609,
+      "CI_Upper": -0.4575717085494229
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Features (RF)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.0005728600933385,
+      "CI_Lower": -0.0008366626245323,
+      "CI_Upper": -0.0003594981082358
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Features (RF)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.0014628803604965,
+      "CI_Lower": -0.0022358835285898,
+      "CI_Upper": -0.0008540641046745
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Features (RF)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.0057024370257201,
+      "CI_Lower": -0.0086474205883305,
+      "CI_Upper": -0.0030260521086042
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": 0.0011292131280637,
+      "CI_Lower": 0.0001139233901627,
+      "CI_Upper": 0.0021940110094018
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": 0.0013622803802232,
+      "CI_Lower": -0.0019529214019159,
+      "CI_Upper": 0.0046086689157194
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "CodeBERT (LR)",
+      "Metric": "Delta_F1",
+      "Observed_Difference": 0.0015495527819646,
+      "CI_Lower": 5.83669645742584e-06,
+      "CI_Upper": 0.0032364751351785
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_ROC_AUC",
+      "Observed_Difference": -0.0004937999705044,
+      "CI_Lower": -0.0007774386206863,
+      "CI_Upper": -0.0002728360454567
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_PR_AUC",
+      "Observed_Difference": -0.0013559361152986,
+      "CI_Lower": -0.0021301093331462,
+      "CI_Upper": -0.0007454932786893
+    },
+    {
+      "Transformation": "Comments removed",
+      "Model": "Hybrid Fusion",
+      "Metric": "Delta_F1",
+      "Observed_Difference": -0.0058895474206239,
+      "CI_Lower": -0.0085180080817076,
+      "CI_Upper": -0.0035138645907033
+    }
+  ],
+  "selected_configuration": {
+    "rf_threshold": 0.5299999999999998,
+    "codebert_threshold": 0.37999999999999984,
+    "hybrid_alpha_feature": 0.875,
+    "hybrid_alpha_embedding": 0.125,
+    "hybrid_threshold": 0.5699999999999997
+  },
+  "source_artifacts": {
+    "main_test_results.csv": {
+      "path": "experiments/canonical70k/results/main_test_results.csv",
+      "sha256": "2e4c7f6e8eedb0d645faa9f605d04903a3e40e87fdd53adefde67618b833e8cf"
+    },
+    "hybrid_vs_rf_paired_bootstrap.csv": {
+      "path": "experiments/canonical70k/results/hybrid_vs_rf_paired_bootstrap.csv",
+      "sha256": "d0f42fd4f1e5acad617059f1e85ef203e82c1c42485cc468e1a1bb5365a24a9e"
+    },
+    "python_feature_ablation.csv": {
+      "path": "experiments/canonical70k/results/python_feature_ablation.csv",
+      "sha256": "4af593894b59378ce44d5caa1fa3c7f9fcf06655ad5b4c99bf7e811ab5446d4d"
+    },
+    "python_parse_validity.csv": {
+      "path": "experiments/canonical70k/results/python_parse_validity.csv",
+      "sha256": "47b39987b21f05668d8d9d1b7ce3055cd37368f4e34e3e98dc72d2ed7d3c06f0"
+    },
+    "parseable_python_results.csv": {
+      "path": "experiments/canonical70k/results/parseable_python_results.csv",
+      "sha256": "0f7f376da887a15b9e25b9795f865459a484acd34955c03e2267fa56a6355eca"
+    },
+    "robustness_fixed_cohort.csv": {
+      "path": "experiments/canonical70k/results/robustness_fixed_cohort.csv",
+      "sha256": "e8cd440ec01509d48517c83ea2a7f829f2f53acd765c61bbc8dc6f82249c83c0"
+    },
+    "robustness_transform_success.csv": {
+      "path": "experiments/canonical70k/results/robustness_transform_success.csv",
+      "sha256": "e5c8d3478a99f53b5ac9cae54424b727a6d1013f53edcf2e3a02dd1a3eed5647"
+    },
+    "robustness_delta_confidence_intervals.csv": {
+      "path": "experiments/canonical70k/results/robustness_delta_confidence_intervals.csv",
+      "sha256": "da5322a565d67f02abb1366f519cc6de8b500e6ecab144f17cd94e3b5882070a"
+    },
+    "selected_configuration.json": {
+      "path": "experiments/canonical70k/results/selected_configuration.json",
+      "sha256": "9b466a8c71e4bd4457fbe6f9f22099b73cf0f4e752280e9eeb7148717cd48384"
+    },
+    "stage5_meta.json": {
+      "path": "experiments/canonical70k/results/stage5_meta.json",
+      "sha256": "e915d346ea6e6af62de319898bab52cea2a359670b2c9dd9e2db86e971dc7c8b"
+    }
+  }
+}
