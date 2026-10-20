@@ -1,0 +1,7 @@
+# Optional dependencies for earlier scripts, not the canonical pipeline.
+# Install requirements.txt first. No full legacy compatibility test was run.
+requests
+sentence-transformers
+xgboost
+# Optional candidate in train_*_plus.py / train_embeddings.py; not tested locally:
+# lightgbm

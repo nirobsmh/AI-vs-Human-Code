@@ -207,8 +207,6 @@ def main():
             raise AssertionError("Feature row count != manifest row count")
         if X.shape[1] != 25:
             raise AssertionError(f"Feature dim {X.shape[1]} != 25")
-        if not np.array_equal(y_manifest, y_manifest):  # noqa: placeholder
-            pass
         y = y_manifest.astype(np.int64)
         if not np.array_equal(y, df["label"].astype(int).to_numpy()):
             alignment_ok = False

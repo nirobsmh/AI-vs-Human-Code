@@ -15,7 +15,7 @@ Supports large files via chunked reading (pandas chunksize).
 Default model: microsoft/codebert-base (768-dim).
 
 Usage:
-  python embed_codes.py \
+  python feature/embed_code.py \
     --in path/to/raw.csv \
     --out path/to/embeddings.csv \
     --model microsoft/codebert-base \
@@ -24,7 +24,6 @@ Usage:
     --chunksize 4096
 """
 
-import os
 import json
 import argparse
 from pathlib import Path
